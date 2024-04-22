@@ -52,7 +52,7 @@ struct Vehicle
         return resultingVehicle; 
     }
 
-    bool isSameVehicle(const Vehicle& otherVehicle)
+    bool isSameVehicle(const Vehicle& otherVehicle) //analogous to ==
     {
         if (this->cost == otherVehicle.cost
             &&
@@ -75,14 +75,14 @@ struct Vehicle
     }
 
     friend ostream& operator<<(ostream& os, const Vehicle& vehicleObject);
-
+    
     //overloads the PRE-increment operator (ex: ++c)
-    Vehicle operator++(/*Nothing in here!*/)
+    void operator++(/*Nothing in here!*/)
     {
         cost++; 
         mileRange++; 
 
-        return *this; //this is a pointer to the current object 
+        //return this; //this is a pointer to the current object 
     }
 }; //end `Vehicle` class def.\
 
@@ -97,12 +97,15 @@ ostream& operator<<(ostream& os, const Vehicle& vehicleObject)
 
 int main()
 {
-
+    int a = 1; 
+    cout << a++ << endl;//pre versus post-increment (decrement operator --) operator 
+    cout << ++a << endl; 
+    cout << a << endl; 
 
     Vehicle rv{ 50'011'111, 15'000.99 };
     Vehicle bike{ 500, 15'000.99 };
     ++bike;  //double plus good! (500 + 1, 15'000.99 + 1.00)
-
+    //bike++; 
     cout << bike << endl; 
 
 
